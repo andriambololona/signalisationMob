@@ -5,9 +5,12 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let signalisation of listeSignalisations" >
+  <ion-card *ngFor="let signalisation of listeSignalisations" 
+  [class.red]="signalisation.statut === 0"
+  [class.yellow]="signalisation.statut === 1" 
+  [class.green]="signalisation.statut === 2"  >
     <ion-card-header>
-      <ion-card-title>{{signalisation.dateSignalisation}}</ion-card-title>
+      <ion-card-title>{{signalisation.dateSignalisation}} </ion-card-title>
       <ion-card-subtitle>
         <span *ngFor="let typeSignalisation of signalisation.typeSignalisations" >{{typeSignalisation.typeSignalisation}}, </span>
       </ion-card-subtitle>
@@ -17,7 +20,7 @@
       {{afficherSomaire(signalisation.descriptionSignalisation)}}
     </ion-card-content>
     <ion-card-content>
-      <ion-button shape="round" color="primary">
+      <ion-button  color="primary" (click)="afficherDetail(signalisation)" >
         <ion-icon slot="start" name="newspaper"></ion-icon>
         Voir les details
       </ion-button>

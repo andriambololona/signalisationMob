@@ -33,6 +33,10 @@ const routes: Routes = [
   {
     path: 'envoi-signalisation',
     loadChildren: () => import('./envoi-signalisation/envoi-signalisation.module').then( m => m.EnvoiSignalisationPageModule)
+  },
+  {
+    path: 'detail-signalisation',
+    loadChildren: () => import('./detail-signalisation/detail-signalisation.module').then( m => m.DetailSignalisationPageModule)
   }
 ];
 @NgModule({

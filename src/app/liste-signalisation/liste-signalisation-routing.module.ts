@@ -6,7 +6,13 @@ import { ListeSignalisationPage } from './liste-signalisation.page';
 const routes: Routes = [
   {
     path: '',
-    component: ListeSignalisationPage
+    component: ListeSignalisationPage,
+    children: [
+      {
+        path: 'detail-signalisation',
+        loadChildren: () => import ('../detail-signalisation/detail-signalisation.module').then(m => m.DetailSignalisationPageModule)
+      }
+    ]
   }
 ];
 

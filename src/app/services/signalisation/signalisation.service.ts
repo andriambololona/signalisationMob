@@ -13,10 +13,12 @@ export class SignalisationService {
     const options={
       token: localStorage.getItem('token')
     };
-    return this.http.post('http://localhost:9090/api/signalisations/user/all',options);
+    return this.http.post('http://192.168.88.68:9090/api/signalisations/user/all',options);
   }
-  restoreToken() {
-  	localStorage.setItem('token', '');
-    //this.client = null;
+
+  public selectAllImage(signalisation){
+    return this.http.get('http://192.168.88.68:9090/api/imageSignalisations/getImage/'+signalisation.idSignalisation);
   }
+
+
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SignalisationService } from '../services/signalisation/signalisation.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-liste-signalisation',
@@ -12,10 +13,14 @@ export class ListeSignalisationPage implements OnInit {
 
   nonTraiteCouleur: any= '';
 
-  constructor(private signalisationService: SignalisationService) { }
+  constructor(private signalisationService: SignalisationService, private router: Router) { }
 
   ngOnInit() {
     this.setListeSignalisations();
+  }
+
+  private afficherDetail(signalisation){
+    this.router.navigate(['/detail-signalisation'], { queryParams: {signalisation: JSON.stringify(signalisation)} });
   }
 
   private afficherSomaire(texte){

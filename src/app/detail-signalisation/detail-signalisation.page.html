@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title size="big">Detail signalisation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-accordion-group>
+    <ion-accordion value="image">
+      <ion-item slot="header">
+        <ion-label>Voir les images</ion-label>
+      </ion-item>
+
+      <ion-list slot="content">
+        <ion-item *ngFor="let image of imageSignalisation">
+          <ion-card>
+            <img [src]="image.lienImageSignalisation">
+          </ion-card>
+        </ion-item>
+      </ion-list>
+    </ion-accordion>
+  </ion-accordion-group>
+
+  <ion-text>
+    <h1><span
+        *ngFor="let typeSignalisation of signalisation.typeSignalisations">{{typeSignalisation.typeSignalisation}},
+      </span></h1>
+  </ion-text>
+  <hr />
+  <ion-text>
+    <h5>Date de publication: <span class="datePublication">{{ signalisation.dateSignalisation }}</span></h5>
+  </ion-text>
+  <hr>
+  <ion-text>
+    <p class="description">{{ signalisation.descriptionSignalisation }}</p>
+  </ion-text>
+  <ion-text>
+    <p>
+      <span [class.red]="signalisation.statut === 0" [class.yellow]="signalisation.statut === 1"
+        [class.green]="signalisation.statut === 2">
+        {{getEtatTraitement(signalisation.statut)}}
+      </span>
+    </p>
+  </ion-text>
+</ion-content>

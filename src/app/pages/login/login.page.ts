@@ -18,7 +18,6 @@ export class LoginPage implements OnInit {
       this.addressMail=params.mail;
       console.log(this.addressMail);
     });
-  
   }
 
 }

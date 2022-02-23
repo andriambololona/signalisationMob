@@ -11,12 +11,12 @@ export class CompteService {
   {
     //const options=this.toolsService.formOption(true, localStorage.getItem('token'),email);
     const options={
-      "email":email,
-      "motDePasse":mdp
-    }
-    console.log(options);
+      email,
+      motDePasse:mdp
+    };
     //this.restoreToken();
-    return this.http.post("http://localhost:9091/api/users/login",options);
+    //return this.http.post('http://localhost:9091/api/users/login',options);
+    return this.http.post('http://localhost:9090/api/users/login',options);
   }
   restoreToken() {
   	localStorage.setItem('token', '');
@@ -25,12 +25,12 @@ export class CompteService {
   public insert(email,mdp,nom,prenom)
   {
     const options={
-      "email":email,
-      "motDePasse":mdp,
-      "nom":nom,
-      "prenom":prenom
-    }
+      email,
+      motDePasse:mdp,
+      nom,
+      prenom
+    };
     console.log(options);
-    return this.http.post("http://localhost:9091/users/create",options);
+    return this.http.post('http://localhost:9091/users/create',options);
   }
 }

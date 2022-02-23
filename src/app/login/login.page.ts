@@ -1,19 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CompteService } from '../services/compte.service';
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss']
+  selector: 'app-login',
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
 })
-export class Tab1Page {
+export class LoginPage implements OnInit {
 
   public message: string;
   public addressMail: string;
   log: any = {};
 
   constructor(private router: Router, private compteServ: CompteService) { }
+
+  ngOnInit() {
+  }
 
   public logForm() {
     const email = this.log.email;
@@ -32,7 +35,8 @@ export class Tab1Page {
     const email = this.log.email;
     const pass = this.log.pass;
     const success = response => {
-      console.log(response.data);
+      console.log(response.idTokenMobile);
+      localStorage.setItem('token', response.idTokenMobile);
       this.addressMail=email;
       /*console.log("message= "+response[1]);
       if (response[0] == 200) {
@@ -47,17 +51,18 @@ export class Tab1Page {
         this.reset();
         this.message = response['message'];
       }*/
-      this.router.navigate(['/tab3'], { queryParams: { mail: this.addressMail } });
+      this.router.navigate(['/tabs'], { queryParams: { mail: this.addressMail } });
 
     };
     const error = response => {
+      console.log(response);
       this.message = 'verifier votre login';
       //this.reset();
      // this.router.navigateByUrl("", { state: { message: messageError } });
       //this.message = response['message'];
     };
-    //this.compteServ.login(email, pass).subscribe(success, error);
-    this.router.navigate(['/tab3'], { queryParams: { mail: email} });
+    this.compteServ.login('utilisateur1@gmail.com', 'mdpuser1').subscribe(success, error);
+    //this.router.navigate(['/tabs'], { queryParams: { mail: email} });
     //let result=this.compteServ.login(email,pass);
     // this.router.navigate(["compte"]);
     //console.log("AAAAAAAAAAAAA "+this.compteServ.login(email,pass));

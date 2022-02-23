@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Envoi de signalisation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="logoHome">
+    <a href="/tab3" style="color: black;">
+      <ion-icon name="home"></ion-icon>
+    </a>
+
+  </div>
+  <div class="logo">
+    <ion-icon name="camera"></ion-icon>
+  </div>
+  <div class="logo1">
+    <ion-icon name="images"></ion-icon>
+  </div>
+  <br>
+  <br>
+  <br>
+  <ion-list>
+    <ion-item>
+      <ion-label>Types signalisation</ion-label>
+      <ion-select multiple="true" cancelText="refuser" okText="accepter">
+        <ion-select-option value="bacon">Bacon</ion-select-option>
+        <ion-select-option value="olives">Black Olives</ion-select-option>
+        <ion-select-option value="xcheese">Extra Cheese</ion-select-option>
+        <ion-select-option value="peppers">Green Peppers</ion-select-option>
+        <ion-select-option value="mushrooms">Mushrooms</ion-select-option>
+        <ion-select-option value="onions">Onions</ion-select-option>
+        <ion-select-option value="pepperoni">Pepperoni</ion-select-option>
+        <ion-select-option value="pineapple">Pineapple</ion-select-option>
+        <ion-select-option value="sausage">Sausage</ion-select-option>
+        <ion-select-option value="Spinach">Spinach</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <div class="input-content">
+    <ion-item>
+
+      <ion-textarea type="text" style="height: 6em;" placeholder="Description" name="description">
+      </ion-textarea>
+    </ion-item>
+  </div>
+  <ion-button (click)="choosephotos()"> choose Photos</ion-button>
+  <div>
+    <ul>
+    </ul>
+  </div>
+</ion-content>
